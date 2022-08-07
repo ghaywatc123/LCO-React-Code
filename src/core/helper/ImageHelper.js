@@ -1,7 +1,8 @@
 import React from 'react'
 
 const ImageHelper = ({product}) => {
-  const imageUrl = product ? product.image : `https://pixabay.com/vectors/warning-exclamation-caution-sign-34621/`
+  const imageUrl = product 
+        ? product.image : `https://pixabay.com/vectors/warning-exclamation-caution-sign-34621/`
   return (
     <div className='rounded border border-success p-2'>
       <img 
