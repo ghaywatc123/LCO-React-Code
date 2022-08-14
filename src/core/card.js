@@ -47,7 +47,7 @@ const Card = ({
                <button
                 onClick={() => {
                   //Todo handle this
-                  removeItemFromCart(product._id)
+                  removeItemFromCart(product.id)
                   console.log("Product Removed from Cart")
                 }}
                 className="btn btn-block btn-outline-danger mt-2 mb-2"
