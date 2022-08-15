@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getProducts } from "./helper/coreapicalls";
 
-import Base from "./Base";
+import Base from "./base";
 import "../styles.css";
-import Card from "./Card";
+import Card from "./card";
 
 export default function Home() {
 	const [products, setProducts] = useState([]);
