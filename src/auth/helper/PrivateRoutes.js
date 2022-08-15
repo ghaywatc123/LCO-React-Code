@@ -1,24 +1,26 @@
-import React, { Component } from "react"
-import {Routes,  Navigate} from "react-router-dom"
-import { isAuthenticated } from "."
+import React from "react";
+import { Route, Navigate } from "react-router-dom";
 
+import { isAuthenticated } from "./index";
 
+const PrivateRoutes = ({ component: Component, ...rest }) => {
+	return (
+		<Route
+			{...rest}
+			render={(props) =>
+				isAuthenticated() ? (
+					<Component {...props} />
+				) : (
+					<Navigate
+						to={{
+							pathname: "/signin",
+							state: { from: props.location },
+						}}
+					/>
+				)
+			}
+		/>
+	);
+};
 
-const PrivateRoutes = ({children, ...rest})=> {
-    return (
-        <Routes>
-            {...rest}
-            render = {({location}) => 
-                fakeAuth.isAuthenticated ? (
-                    <Element {...props} />
-                ) : (
-                    <Navigate 
-                        to={{pathname: "/login",
-                        state: {from : props.location},
-                        }}
-                    />
-                )
-            }
-        </Routes>
-    ) 
-}
+export default PrivateRoutes;
