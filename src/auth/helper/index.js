@@ -2,7 +2,7 @@ import {API} from "../../backend"
 import { cartEmpty } from "../../core/helper/cartHelper"
 
 
-export const signup = user => {
+export const signup = (user) => {
     return fetch(`${API}user/`,{
         method: "POST",
         headers: {
@@ -65,8 +65,8 @@ export const signout = next => {
         return fetch(`${API}user/logout/${userId}`, {
             method: "GET"
         })
-        .then(response => {
-            console.log("Logout Successfully"),
+        .then((response) => {
+            console.log("Logout Successfully")
             next();
         })
         .catch(err =>console.log(err))
