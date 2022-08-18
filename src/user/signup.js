@@ -15,10 +15,10 @@ import { signup } from "../auth/helper";
     success: false,
   });
 
-  const {Name, email, password,error,success} =values
+  const {Name, email, password,error,success} =values;
 
-  const handleChange = (Name) => (Event) => {
-    setValues({...values, error:false, [Name]: Event.target.values})
+  const handleChange = (Name) => (event) => {
+    setValues({...values, error:false, [Name]: event.target.values})
   }
 
   const onSubmit = (event) => {
