@@ -14,7 +14,9 @@ const Routess = () =>{
             <Routes>
                 <Route path="/" exact element={<Home/>}/>
                 <Route path="/signup" element={<Signup/>} />
-                {<PrivateRoutes path="/user/dashboard" exact element={<UserDashboard />}/>}
+                <Route element={<PrivateRoutes />}>
+					<Route path="/user/dashboard" exact element={<UserDashboard />} />
+				</Route>    
                 {/*<Route path="user/dashboard" element= {<PrivateRoutes> <UserDashboard/> </PrivateRoutes>} />*/}
             </Routes>
         </BrowserRouter>
