@@ -26,13 +26,24 @@ export const signin = (user) => {
             formData.append(name, user[name ])
         }
 
+        // const {email, password} = user
+        // formData.append('email', email)
+        // formData.append('password', password)
+
+        for(var key of formData.keys()){
+            console.log("MyKey: ",key)
+        }
+
+
         return fetch(`${API}user/login/`, {
             method: "POST",
             body: formData
         })
 
-        .then(response => {
-            return response.json()
+        .then((response) => {
+           console.log("Success", response);
+           return response.json();
+
         })
 
         .catch(err => console.log(err))
