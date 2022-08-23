@@ -8,20 +8,19 @@ import Signup from "./user/signup";
 
 import UserDashboard from "./user/userdashboard"
 
-const Routess = () =>{
-    return(
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" exact element={<Home/>}/>
-                <Route path="/signup" element={<Signup/>} />
-                {<PrivateRoutes path="/user/dashboard" exact element={<UserDashboard />}/>}
-                <Route element={<PrivateRoutes />}>
+const Routess = () => {
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" exact element={<Home />} />
+				<Route path="/signup" element={<Signup />} />
+				<Route element={<PrivateRoutes />}>
 					<Route path="/user/dashboard" exact element={<UserDashboard />} />
-				</Route>    
-                {/*<Route path="user/dashboard" element= {<PrivateRoutes> <UserDashboard/> </PrivateRoutes>} />*/}
-            </Routes>
-        </BrowserRouter>
-    );
+				</Route>
+				{/*<Route path="user/dashboard" element= {<PrivateRoutes> <UserDashboard/> </PrivateRoutes>} />*/}
+			</Routes>
+		</BrowserRouter>
+	);
 };
 
 export default Routess;
