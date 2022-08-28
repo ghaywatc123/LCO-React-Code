@@ -40,12 +40,11 @@ export const signin = (user) => {
             body: formData
         })
 
-        .then((response) => {
-           console.log("Success", response);
+        .then(response => {
+           console.log("SUCCESS", response);
            return response.json();
 
         })
-
         .catch(err => console.log(err))
 }
 
