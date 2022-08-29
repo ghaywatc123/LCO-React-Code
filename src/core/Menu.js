@@ -1,24 +1,31 @@
-import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
+const Menu = ({ path }) => {
+	let location = useLocation();
 
- const currentTab = (history, path) => {
-    if (history.location.pathname===path) {
-        return {color: '#2ecc72'}
-    } else {
-        return {color: '#ffffff'}
-    }
- }
+	const currentTab = (path) => {
+		if (location.pathname === path) {
+			return { color: "#2ecc72" };
+		} else {
+			return { color: "#FFFFFF" };
+		}
+	};
 
- const Menu = ({history, path}) => {
-  return (
-    <div>
-      <ul className='nav nav-tabs bg-dark'>
-        <Link style={currentTab(history, "/")} className= "nav-link" to="/">Home</Link>
-        <li className='nav-item'><a className='nav-link' href='#'>Signin</a></li>
-      </ul>
-    </div>
-  )
-}
+	return (
+		<div>
+			<ul className="nav nav-tabs bg-dark">
+				<Link style={currentTab("/")} className="nav-link" to="/">
+					Home
+				</Link>
+				<li className="nav-item">
+					<Link className="nav-link" to="/signin" style={currentTab("/signin")}>
+						Signin
+					</Link>
+				</li>
+			</ul>
+		</div>
+	);
+};
 
-export default withRouter(Menu);
+export default Menu;
