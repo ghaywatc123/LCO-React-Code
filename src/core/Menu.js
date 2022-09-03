@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import {signout, isAuthenticated} from "../auth/helper/index"
 
 
@@ -14,7 +14,7 @@ let location = useLocation;
  }
 
  const Menu = ({path}) => {
-  
+  const navigate = useNavigate
   return (
 		<div>
 			<ul className="nav nav-tabs bg-dark">
