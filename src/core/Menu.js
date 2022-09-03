@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import {signout, isAuthenticated} from "../auth/helper/index"
 
+
+
 let location = useLocation;
  const currentTab = (path) => {
     if (location.pathname===path) {
@@ -40,11 +42,15 @@ let location = useLocation;
 					</Link>
 				</li>
 				<li className="nav-item">
-					<span className='nav-link text-warning' onClick={() => {
-						signout(() => {
-							<Navigate to="/"/>
-						});
-					}}>Signout</span>
+					<span
+						className="nav-link text-warning"
+						onClick={() => {
+							signout(() => {
+								navigate("/"); //updated
+							});
+						}}					>
+						Signout
+					</span>
 				</li>
 			</ul>
 		</div>
