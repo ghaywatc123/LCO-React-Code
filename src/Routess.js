@@ -8,6 +8,7 @@ import Signup from "./user/signup";
 
 import UserDashboard from "./user/userdashboard"
 import Signin from "./user/signin";
+import Cart from "./core/Cart";
 
 const Routess = () => {
 	return (
@@ -16,6 +17,7 @@ const Routess = () => {
 				<Route path="/" exact element={<Home />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/signin" element={<Signin />} />
+				<Route path="=/Cart" element={<Cart />}/>
 				<Route element={<PrivateRoutes />}>
 					<Route path="/user/dashboard" exact element={<UserDashboard />} />
 				</Route>
