@@ -10,7 +10,9 @@ import { isAuthenticated } from "../auth/helper";
 const Card = ({
   product,
   addtoCart = true,
-  removeFromCart= true
+  removeFromCart= true,
+  reload = undefined,
+  setReload = f => f,
 }) => {
 
   const [redirect, setRedirect] = useState(false)
@@ -34,14 +36,15 @@ const Card = ({
     }
   };
 
-  const showAddToCart = addToCart => {
+  const showAddToCart = (addToCart) => {
     return (
-          <button
+        addtoCart && (<button
               onClick={addToCart}
               className="btn btn-block btn-outline-success mt-2 mb-2">
           Add to Cart
           </button>
-    )
+      )
+    );
   };
 
   const showRemoveFromCart = removeFromCart => {
@@ -51,6 +54,7 @@ const Card = ({
                 onClick={() => {
                   //Todo handle this
                   removeItemFromCart(product.id)
+                  setReload(!reload)
                   console.log("Product Removed from Cart")
                 }}
                 className="btn btn-block btn-outline-danger mt-2 mb-2"

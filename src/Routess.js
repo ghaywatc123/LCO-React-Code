@@ -17,7 +17,7 @@ const Routess = () => {
 				<Route path="/" exact element={<Home />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/signin" element={<Signin />} />
-				<Route path="=/Cart" element={<Cart />}/>
+				<Route path="/Cart" element={<Cart />}/>
 				<Route element={<PrivateRoutes />}>
 					<Route path="/user/dashboard" exact element={<UserDashboard />} />
 				</Route>
