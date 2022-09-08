@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Base from "./Base"
 import Card from './Card'
 import { addItemToCart, loadCart, removeItemFromCart } from './helper/cartHelper'
+import Payment from './Payment'
 
 
 const Cart =() => {
@@ -19,7 +20,7 @@ const Cart =() => {
                     key = {index}
                     product = {product}
                     removeFromCart = {true}
-                    addToCart = {false}
+                    addtoCart = {false}
                     reload = {reload}
                     setReload = {setReload}
                 />
@@ -37,7 +38,15 @@ const Cart =() => {
     <Base title='MY Cart' description='This is my cart'>
          <div className='row text-center'>
             <div className='col-6'>{loadAllProduct(products)}</div>
-            <div className='col-6'>{loadCheckout()}</div>
+            <div className='col-6'>{products.length > 0 ?
+            (
+              <Payment products={products} setReload={setReload}/>
+            ): 
+              (
+                <h3>Please Login or add something in cart</h3>
+              )
+            }
+            </div>
         </div>
       <h1>Welcome to Cart </h1>
       
