@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from "react";
 import {Navigate} from "react-router-dom"
 import {createOrder} from "./helper/orderHelper"
-import { getmeTOken, processPayment } from "./helper/paymentHelper";
+import { getmeToken, processPayment } from "./helper/paymentHelper";
 import {cartEmpty} from "./helper/cartHelper"
 import {isAuthenticated, signout} from "../auth/helper"
 import DropIn from "braintree-web-drop-in-react"
@@ -26,7 +26,7 @@ const Payment =({
   const token = isAuthenticated && isAuthenticated().token;
 
   const getToken = (userId, token) => {
-    getmeTOken(userId, token)
+    getmeToken(userId, token)
     .then(info => {
         if(info.error){
             setInfo({

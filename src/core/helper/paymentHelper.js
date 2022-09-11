@@ -1,8 +1,8 @@
 import { API } from "../../backend";
 
-export const getmeTOken = (userid, token) => {
-    return fetch(`${API}/payment/gettoken/${userid}/${token}/`, {
-        method: "GET"
+export const getmeToken = (userid, token) => {
+    return fetch(`${API}payment/gettoken/${userid}/${token}/`, {
+        method: "GET",
     })
     .then((response) => {
         return response.json()
