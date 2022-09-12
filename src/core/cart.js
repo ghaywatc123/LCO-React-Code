@@ -40,7 +40,7 @@ const Cart =() => {
             <div className='col-6'>{loadAllProduct(products)}</div>
             <div className='col-6'>{products.length > 0 ?
             (
-              <Payment products={products} setReload={setReload}/>
+              <Payment products={products} setReload={setReload }/>
             ): 
               (
                 <h3>Please Login or add something in cart</h3>

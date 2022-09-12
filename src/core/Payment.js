@@ -17,7 +17,7 @@ const Payment =({
   const [info, setInfo] = useState({
     loading: false,
     success: false,
-    clintToken: null,
+    clientToken: null,
     error: "",
     instance: {}
   })
@@ -59,7 +59,7 @@ const Payment =({
     return (
         <div>
             {
-                info.clintToken !== null && products.length > 0 ? 
+                info.clientToken !== null && products.length > 0 ? 
                 (
                     <div>
                         <DropIn options={{authorization: info.clintToken}} onInstance={instance => (info.instance = instance)}>
