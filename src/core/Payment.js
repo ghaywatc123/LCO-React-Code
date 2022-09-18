@@ -46,6 +46,72 @@ const Payment = ({ products, reload = undefined, setReload = (f) => f }) => {
 		return amount;
 	};
 
+	const onPurchase = () => {
+		setInfo({loading: true})
+		let nonce
+		let getNonce = info.instance.requestPaymentMethod()
+		.then(data => {
+			nonce = data.nonce
+			const paymentData  = {
+				paymentMethodNonce: nonce,
+				amount: getAmount()
+			}
+			processPayment(userId, token, paymentData)
+			.then(response => {
+				if (response.error) {
+					if (response.code == '1') {
+						alert("Payment Faild")
+						signout(() => {
+							return <Navigate to="/" />
+						})
+					}
+				}else{
+					setInfo({
+						...info,
+						success: response.success, loading: false
+					})
+					console.log("Payment Success")
+					let product_names = ""
+					products.forEach(function(item){
+						product_names += item.names + ", "
+					});
+					const orderData = {
+						products: product_names,
+						transaction_id: response.transaction.id,
+						amount: response.transaction.amount
+					}
+					createOrder(userId, token, orderData)
+					.then(response => {
+						if (response.error) {
+							if (response.code == '1') {
+								console.log("ORDER FAILD")
+							}
+							signout(() => {
+								return <Navigate to="/" />
+							})
+						}else{
+							if (response.success == true) {
+								alert("Order Placed")
+							}
+						}
+						
+					})
+					.catch(error => {
+						setInfo({loading:false, success: false})
+						console.log("order failed", error)
+					})
+					cartEmpty(() => {
+						console.log("cart is empty")
+					})
+					setReload(!reload)
+				}
+				
+			})
+			.catch(e => console.log(e))
+		})
+		.catch(e => console.log("NONCE", e))
+	}
+
 	const showDropIn = () => {
 		return (
 			<div>
@@ -55,8 +121,8 @@ const Payment = ({ products, reload = undefined, setReload = (f) => f }) => {
 							options={{ authorization: info.clientToken }}
 							onInstance={(instance) => (info.instance = instance)}
 						>
-							<button className="btn btn-block btn-success">Logout</button>
 						</DropIn>
+						<button onClick={onPurchase} className="btn btn-block btn-success">Place Order</button>
 					</div>
 				) : (
 					<h3>Please Login First</h3>
