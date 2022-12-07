@@ -7,6 +7,9 @@ import { isAuthenticated, signout } from "../auth/helper";
 import DropIn from "braintree-web-drop-in-react";
 
 const Payment = ({ products, reload = undefined, setReload = (f) => f }) => {
+
+	console.log('PRODUCTS>>>>>>>>>>',products);
+
 	const [info, setInfo] = useState({
 		loading: false,
 		success: false,
@@ -19,7 +22,8 @@ const Payment = ({ products, reload = undefined, setReload = (f) => f }) => {
 
 	const getToken = (userId, token) => {
 		getmeToken(userId, token).then((info) => {
-			if (info.error) {
+			console.log('INFO>>>>>>>>>>',info);
+			if (info?.error) {
 				setInfo({
 					...info,
 					error: info.error,
@@ -73,7 +77,8 @@ const Payment = ({ products, reload = undefined, setReload = (f) => f }) => {
 					console.log("Payment Success")
 					let product_names = ""
 					products.forEach(function(item){
-						product_names += item.names + ", "
+						console.log('ITEM>>>>>>>>>>',item);
+						product_names += item.name + ", "
 					});
 					const orderData = {
 						products: product_names,

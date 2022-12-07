@@ -1,6 +1,7 @@
 import { API } from "../../backend";
 
 export const createOrder = (userId, token, orderData) => {
+    console.log('ORDER DATA>>>>>>>>>',orderData);
     const formdata = new FormData()
 
     for(const name in orderData){
