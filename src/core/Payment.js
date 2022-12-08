@@ -6,6 +6,8 @@ import { cartEmpty } from "./helper/cartHelper";
 import { isAuthenticated, signout } from "../auth/helper";
 import DropIn from "braintree-web-drop-in-react";
 
+// Braintree Payment GateWay
+
 const Payment = ({ products, reload = undefined, setReload = (f) => f }) => {
 
 	console.log('PRODUCTS>>>>>>>>>>',products);
