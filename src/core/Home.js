@@ -18,7 +18,7 @@ export default function Home() {
 			}
 		});
 	};
-
+// Author Chetan Ghaywat
 	useEffect(() => {
 		loadAllProducts();
 	}, []);
